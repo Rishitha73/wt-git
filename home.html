@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>WT Lab Home</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap"
+    rel="stylesheet"
+  />
+  <style>
+    :root {
+      --ink: #1c1a17;
+      --muted: #6e645a;
+      --paper: #f8f2ea;
+      --paper-strong: #f1e6da;
+      --accent: #2b6f6a;
+      --accent-strong: #1f4b48;
+      --line: #e0d5c7;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: "IBM Plex Sans", system-ui, sans-serif;
+      color: var(--ink);
+      background:
+        radial-gradient(1200px 400px at 10% 0%, #fff 0%, transparent 60%),
+        radial-gradient(1000px 500px at 90% 10%, #f2ebe2 0%, transparent 55%),
+        linear-gradient(180deg, #fbf7f1 0%, #f5ede3 100%);
+      min-height: 100vh;
+    }
+
+    header {
+      padding: 36px 6vw 12px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .brand {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .brand h1 {
+      margin: 0;
+      font-family: "Playfair Display", "Times New Roman", serif;
+      font-weight: 700;
+      font-size: clamp(28px, 4vw, 44px);
+      letter-spacing: 0.5px;
+    }
+
+    .brand p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    .tag {
+      padding: 10px 16px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: #fff;
+      color: var(--accent-strong);
+      font-weight: 600;
+      font-size: 13px;
+      letter-spacing: 0.4px;
+      text-transform: uppercase;
+    }
+
+    .hero {
+      padding: 30px 6vw 40px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 28px;
+      align-items: center;
+    }
+
+    .hero-card {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      padding: 26px;
+      box-shadow: 0 20px 50px rgba(18, 11, 5, 0.08);
+    }
+
+    .hero-card h2 {
+      margin: 0 0 10px;
+      font-size: 24px;
+      font-weight: 600;
+    }
+
+    .hero-card p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 16px;
+      margin-top: 20px;
+    }
+
+    .stat {
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 16px;
+    }
+
+    .stat span {
+      display: block;
+      color: var(--muted);
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.4px;
+    }
+
+    .stat strong {
+      display: block;
+      font-size: 18px;
+      margin-top: 6px;
+    }
+
+    .grid {
+      padding: 10px 6vw 60px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 18px;
+    }
+
+    .card {
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 20px;
+      display: grid;
+      gap: 12px;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 18px 32px rgba(22, 12, 5, 0.12);
+    }
+
+    .card h3 {
+      margin: 0;
+      font-size: 18px;
+    }
+
+    .card p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.5;
+      font-size: 14px;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--accent-strong);
+      text-transform: uppercase;
+      letter-spacing: 0.3px;
+    }
+
+    .pill::before {
+      content: "";
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--accent);
+      display: inline-block;
+    }
+
+    footer {
+      padding: 20px 6vw 40px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    @media (max-width: 640px) {
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .tag {
+        align-self: flex-start;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="brand">
+      <h1>WT Lab Workspace</h1>
+      <p>Quick access to HTML, PHP, and file-handling demos.</p>
+    </div>
+    <div class="tag">Semester Work</div>
+  </header>
+
+  <section class="hero">
+    <div class="hero-card">
+      <h2>Welcome back</h2>
+      <p>
+        This page is your hub for Web Technology practice files. Use the cards
+        below to open each task quickly and keep track of what you have built.
+      </p>
+      <div class="stats">
+        <div class="stat">
+          <span>HTML Tasks</span>
+          <strong>6</strong>
+        </div>
+        <div class="stat">
+          <span>PHP Tasks</span>
+          <strong>2</strong>
+        </div>
+        <div class="stat">
+          <span>Last Updated</span>
+          <strong>Feb 9, 2026</strong>
+        </div>
+      </div>
+    </div>
+    <div class="hero-card">
+      <h2>How to use</h2>
+      <p>
+        Click any card to open the file. If you want this page to live in the
+        root, move it out of the <strong>git</strong> folder and update links.
+      </p>
+      <p style="margin-top: 16px;">
+        Keep adding more cards as you build new exercises.
+      </p>
+    </div>
+  </section>
+
+  <section class="grid">
+    <a class="card" href="../form.html">
+      <div class="pill">HTML Form</div>
+      <h3>Student Registration</h3>
+      <p>Basic form controls, inputs, radio buttons, and checkboxes.</p>
+    </a>
+
+    <a class="card" href="../form_validation.html">
+      <div class="pill">Validation</div>
+      <h3>Form Validation</h3>
+      <p>Practice validation rules and input constraints.</p>
+    </a>
+
+    <a class="card" href="../table1.html">
+      <div class="pill">Tables</div>
+      <h3>Table Layout</h3>
+      <p>Learn HTML table structure and formatting.</p>
+    </a>
+
+    <a class="card" href="../fileUpload.html">
+      <div class="pill">Upload</div>
+      <h3>File Upload UI</h3>
+      <p>Upload a file through a simple HTML form.</p>
+    </a>
+
+    <a class="card" href="../file-handling1.html">
+      <div class="pill">Files</div>
+      <h3>File Handling 1</h3>
+      <p>Explore basic file operations and output.</p>
+    </a>
+
+    <a class="card" href="../file-handling2.html">
+      <div class="pill">Files</div>
+      <h3>File Handling 2</h3>
+      <p>Additional file processing tasks and practice.</p>
+    </a>
+
+    <a class="card" href="../loadFile.php">
+      <div class="pill">PHP</div>
+      <h3>Load File</h3>
+      <p>Read and display file contents using PHP.</p>
+    </a>
+
+    <a class="card" href="../readData.php">
+      <div class="pill">PHP</div>
+      <h3>Read Data</h3>
+      <p>Simple PHP data read and output example.</p>
+    </a>
+  </section>
+
+  <footer>
+    Built for quick navigation. Update descriptions as the lab grows.
+  </footer>
+</body>
+</html>
