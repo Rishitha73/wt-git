@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Profile - WT Lab</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --ink: #1c1a17;
+      --muted: #6e645a;
+      --paper: #f8f2ea;
+      --accent: #2b6f6a;
+      --accent-strong: #1f4b48;
+      --line: #e0d5c7;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: "IBM Plex Sans", system-ui, sans-serif;
+      color: var(--ink);
+      background: linear-gradient(180deg, #fbf7f1 0%, #f5ede3 100%);
+      min-height: 100vh;
+    }
+
+    nav {
+      background-color: #333;
+      padding: 1rem 2rem;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    .nav-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .logo {
+      color: white;
+      font-size: 1.5rem;
+      font-weight: bold;
+      text-decoration: none;
+    }
+
+    .nav-menu {
+      display: flex;
+      list-style: none;
+      gap: 2rem;
+    }
+
+    .nav-menu li a {
+      color: white;
+      text-decoration: none;
+      font-size: 1rem;
+      padding: 0.5rem 1rem;
+      transition: background-color 0.3s;
+      border-radius: 4px;
+    }
+
+    .nav-menu li a:hover {
+      background-color: #555;
+    }
+
+    .nav-menu li a.active {
+      background-color: #0066cc;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
+
+    .profile-header {
+      background: white;
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      padding: 40px;
+      margin-bottom: 30px;
+      box-shadow: 0 20px 50px rgba(18, 11, 5, 0.08);
+      display: flex;
+      gap: 30px;
+      align-items: center;
+    }
+
+    .profile-avatar {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--accent) 0%, var(--accent-strong) 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 48px;
+      color: white;
+      font-weight: 600;
+      flex-shrink: 0;
+    }
+
+    .profile-info h1 {
+      margin: 0 0 10px;
+      font-size: 32px;
+    }
+
+    .profile-info p {
+      margin: 5px 0;
+      color: var(--muted);
+    }
+
+    .profile-section {
+      background: white;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 30px;
+      margin-bottom: 20px;
+      box-shadow: 0 10px 30px rgba(18, 11, 5, 0.06);
+    }
+
+    .profile-section h2 {
+      margin: 0 0 20px;
+      font-size: 24px;
+      color: var(--accent-strong);
+    }
+
+    .info-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+
+    .info-item {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+
+    .info-item label {
+      font-size: 12px;
+      text-transform: uppercase;
+      color: var(--muted);
+      letter-spacing: 0.5px;
+    }
+
+    .info-item span {
+      font-size: 16px;
+      font-weight: 500;
+    }
+
+    .skills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .skill-tag {
+      padding: 8px 16px;
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      font-size: 14px;
+      color: var(--accent-strong);
+      font-weight: 500;
+    }
+
+    @media (max-width: 640px) {
+      .profile-header {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .nav-container {
+        flex-direction: column;
+        gap: 1rem;
+      }
+
+      .nav-menu {
+        flex-direction: column;
+        gap: 0.5rem;
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div id="navbar-container"></div>
+  <script>
+    // Load navbar from external file
+    fetch('navbar.html')
+      .then(response => response.text())
+      .then(data => {
+        const parser = new DOMParser();
+        const doc = parser.parseFromString(data, 'text/html');
+        const navbar = doc.querySelector('nav');
+        if (navbar) {
+          document.getElementById('navbar-container').appendChild(navbar);
+          // Update active menu item
+          const menuLinks = document.querySelectorAll('.nav-menu a');
+          menuLinks.forEach(link => {
+            link.classList.remove('active');
+            if (link.textContent === 'Profile') {
+              link.classList.add('active');
+            }
+          });
+        }
+      })
+      .catch(error => console.error('Error loading navbar:', error));
+  </script>
+
+  <div class="container">
+    <div class="profile-header">
+      <div class="profile-avatar">RS</div>
+      <div class="profile-info">
+        <h1>Rishi Sharma</h1>
+        <p>Web Technology Student</p>
+        <p>📧 rishi@example.com</p>
+      </div>
+    </div>
+
+    <div class="profile-section">
+      <h2>Personal Information</h2>
+      <div class="info-grid">
+        <div class="info-item">
+          <label>Full Name</label>
+          <span>Rishi Sharma</span>
+        </div>
+        <div class="info-item">
+          <label>Roll Number</label>
+          <span>WT2026001</span>
+        </div>
+        <div class="info-item">
+          <label>Department</label>
+          <span>Computer Science</span>
+        </div>
+        <div class="info-item">
+          <label>Semester</label>
+          <span>Spring 2026</span>
+        </div>
+        <div class="info-item">
+          <label>Email</label>
+          <span>rishi@example.com</span>
+        </div>
+        <div class="info-item">
+          <label>Phone</label>
+          <span>+91 98765 43210</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="profile-section">
+      <h2>Technical Skills</h2>
+      <div class="skills">
+        <span class="skill-tag">HTML5</span>
+        <span class="skill-tag">CSS3</span>
+        <span class="skill-tag">JavaScript</span>
+        <span class="skill-tag">PHP</span>
+        <span class="skill-tag">MySQL</span>
+        <span class="skill-tag">Git</span>
+        <span class="skill-tag">Responsive Design</span>
+        <span class="skill-tag">Web Development</span>
+      </div>
+    </div>
+
+    <div class="profile-section">
+      <h2>About</h2>
+      <p style="line-height: 1.8; color: var(--muted);">
+        Passionate about web technologies and creating user-friendly interfaces. 
+        Currently learning advanced web development concepts including server-side 
+        programming, database integration, and modern web frameworks. Enthusiastic 
+        about building responsive and accessible web applications.
+      </p>
+    </div>
+  </div>
+</body>
+</html>
